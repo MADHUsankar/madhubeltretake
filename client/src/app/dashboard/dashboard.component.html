@@ -1,0 +1,61 @@
+<h3 *ngIf="current_user">Hello, {{current_user.name}}</h3>
+<p><a href="/logout">Log out</a></p>
+<p><a href="/dashboard">Dashboard</a></p>
+
+
+ 
+   <h4>List of other users(Click to view profile)</h4>
+  <div   *ngFor="let u of alluserswocurrent">
+      
+     <a> {{u.name}}</a>
+    </div>
+  
+<form (submit)="createNewBucket()" #formData='ngForm'>
+        <input type="text" [(ngModel)]="newBucket.title" placeholder="Title" required 
+        minlength="5"  #title='ngModel'>
+        <span style="color: red;" *ngIf="title.errors && (title.dirty ||title.touched)">Title should atleast be 5characters long</span> <br>
+        
+        <input type="text"[(ngModel)]="newBucket.description" placeholder="Description"required 
+        minlength="10" #description='ngModel'>
+        <span style="color: red;" *ngIf="description.errors && (description.dirty ||description.touched)">Description should atleast be 10 characters long</span> <br>
+
+
+
+        <select [(ngModel)]="newBucket.selectedValue"  >
+            <option [value]="value.label" *ngFor="let value of alluserswocurrent">{{value.name}}</option>
+        </select>
+
+      <button type="submit" [disabled]="!formData.valid">Add to List!</button>
+     
+  </form>  
+<!-- 
+
+  <h4>Before I die I want to:</h4>
+  <ul>
+
+ 
+    <li ng-repeat="bucket in buckets1">
+      <input
+        type="checkbox"
+        value="{{bucket.state}}"
+        ng-checked="{{bucket.state}}"
+        ng-click="toggleStateOfBucket(bucket)"
+      >
+      {{bucket.tagger.name}} | {{bucket.title}} | {{bucket.description}}
+      -- {{bucket.createdAt}}
+    </li>
+
+    <h5>Others'</h5>
+    <li ng-repeat="bucket in buckets2">
+      <input
+        type="checkbox"
+        value="{{bucket.state}}"
+        ng-checked="{{bucket.state}}"
+        ng-click="toggleStateOfBucket(bucket)"
+      >
+      {{bucket.tagger.name}} | {{bucket.title}} | {{bucket.description}}
+      -- {{bucket.createdAt}}
+    </li>
+  </ul>
+     -->
+ 

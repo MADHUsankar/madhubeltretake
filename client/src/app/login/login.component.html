@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- <meta charset="utf-8"> -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <title>Bucket list App</title>
+    <!-- Bootstrap -->
+
+  </head>
+<body>
+    
+    <br>
+<form (submit)="login()" #formData='ngForm'>
+  
+   Name :<input 
+    type="text" 
+    name="name" 
+    required 
+    minlength="1" 
+   [(ngModel)]="login_user.name"
+    #name='ngModel'
+  />
+  
+<span style="color: red;" *ngIf="name.errors && (name.dirty ||name.touched)">Name should atleast be 1 characters long</span> <br>
+
+
+  <button type="submit" [disabled]="!formData.valid">Login!</button>
+</form> 
